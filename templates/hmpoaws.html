@@ -1,0 +1,95 @@
+
+{{define "aws"}}
+
+<html>
+<head>
+
+    <title>HMPO AWS</title>
+
+<style>
+
+    {{template "pagelayout"}}
+    {{template "tablestyle"}}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+
+        <h1>My Company {Change This}</h1>
+
+    </div>
+
+    <div id="content">
+
+        <div id="nav">
+
+
+
+
+        </div>
+
+        <div id="main">
+
+
+            <table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+
+                <!-- Table Header -->
+                <thead>
+                <tr>
+                    <th>Private IP</th>
+                    <th>Name</th>
+                    <th>Instance Type</th>
+                    <th>VPC ID</th>
+
+                </tr>
+                </thead>
+                <!-- Table Header -->
+
+                <!-- Table Body -->
+                <tbody>
+
+                {{range .}}
+
+                <tr class="even">
+
+                    <td>{{.PrivateIpAddress}}</td>
+                    <td>{{.Tag}}</td>
+                    <td>{{.InstanceType}}</td>
+                    <td>{{.VpcId}}</td>
+
+                </tr>
+
+                {{end}}
+
+
+                </tbody>
+                <!-- Table Body -->
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div id="footer">
+
+        Copyright &copy; 2016 HMPO DevOPs
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
+
+{{end}}

@@ -13,10 +13,10 @@ import (
 )
 
 
-
+//load templates first
 var templ =	template.Must(template.ParseGlob("./templates/*"))
 
-
+//construct to define fields to hold ec2 attributes
 type HMPOinstance struct {
 
 	InstanceId string
@@ -27,8 +27,12 @@ type HMPOinstance struct {
 	Counter int
 }
 
+
+//slice to hold the result
 type listofHMPOinstances []HMPOinstance
 
+
+//implement the sort interface. this allow lisofHMPOintsances to use sort
 func (slice listofHMPOinstances) Len() int{
 
 	return len(slice)
@@ -45,6 +49,8 @@ func (slice listofHMPOinstances) Swap(i,j int){
 	slice[i], slice[j] = slice[j], slice[j]
 }
 
+
+//diplay result
 func awsinfohandler(w http.ResponseWriter, r *http.Request) {
 
 
@@ -54,7 +60,7 @@ func awsinfohandler(w http.ResponseWriter, r *http.Request) {
 }
 
 
-
+//interate over theh result and return a slice containingg the result
 func HMPOInstances() []HMPOinstance{
 
 
@@ -80,7 +86,7 @@ func HMPOInstances() []HMPOinstance{
 
 	for idx, res := range resp.Reservations {
 
-		fmt.Println("  > Number of instances: ", len(res.Instances))
+		fmt.Println("  > Number of reservations: ", len(res.Instances))
 
 		for _, inst := range resp.Reservations[idx].Instances {
 

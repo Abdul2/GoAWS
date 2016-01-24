@@ -20,4 +20,4 @@ You must have your AWS credentials (access keys) present in your credentials fil
 
 <h3> output</h3>
 
-see the screen shot
+see the screenshot

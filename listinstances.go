@@ -86,7 +86,7 @@ func HMPOInstances() []HMPOinstance{
 
 	for idx, res := range resp.Reservations {
 
-		fmt.Println("  > Number of reservations: ", len(res.Instances))
+		fmt.Println("  > Number of Reservations: ", len(res.Instances))
 
 		for _, inst := range resp.Reservations[idx].Instances {
 

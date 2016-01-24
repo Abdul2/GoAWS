@@ -17,3 +17,7 @@ The programme uses GO sdk to query AWS account and then renders html table to di
 - update HTTML to reflect your organisation
 
 You must have your AWS credentials (access keys) present in your credentials file (refer to AWS documentations)
+
+<h3> output</h3>
+
+see the screen shot

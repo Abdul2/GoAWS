@@ -1,2 +1,8 @@
 /aws.iml
 /.idea
+
+# Mac
+.DS_Store
+
+# Build artifact
+GoAWS

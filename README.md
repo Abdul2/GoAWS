@@ -1,23 +1,36 @@
+# GoAWS
 
-<h3> Simple GO programme to display ec2 attributes </h3>
+Simple Go programme to display ec2 attributes. It uses the AWS Go SDK to query AWS account and then renders html table to display the results.
+I use it at work when i am asked to provide a summary of deployed ec2s.
 
+## Prerequisite
 
-The programme uses GO sdk to query AWS account and then renders html table to display the results.
- 
- I use it at work when i am asked to provide a summary of deployed ec2s.
+You must have your AWS credentials (access keys) present in your credentials file (refer to AWS documentations).
 
-<h3> To run </h3>
+## To run
 
-- Install GO 
+Install Go
 
-- go get the AWS sdk 
+Install AWS Go SDK:
 
-- down load and run
+```
+go get github.com/aws/aws-sdk-go
+```
 
-- update HTTML to reflect your organisation
+Clone this repo:
 
-You must have your AWS credentials (access keys) present in your credentials file (refer to AWS documentations)
+```
+go get github.com/leeprovoost/GoAWS
+```
 
-<h3> output</h3>
+Build and run:
 
-see the screenshot
+```
+go build && ./GoAWS
+```
+
+Don't forget to update HTTML to reflect your organisation.
+
+## Screenshot
+
+![screenshot](https://github.com/leeprovoost/GoAWS/raw/master/documentation/screenshot.png)

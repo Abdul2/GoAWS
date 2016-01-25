@@ -20,17 +20,18 @@ go get github.com/aws/aws-sdk-go
 Clone this repo:
 
 ```
-go get github.com/leeprovoost/GoAWS
+go get github.com/Abdul2/GoAWS
 ```
 
-Build and run:
+run:
 
 ```
-go build && ./GoAWS
+go run listinstances.go
+
 ```
 
 Don't forget to update HTTML to reflect your organisation.
 
 ## Screenshot
 
-![screenshot](https://github.com/leeprovoost/GoAWS/raw/master/documentation/screenshot.png)
+![screenshot](https://github.com/Abdul2/GoAWS/raw/master/documentation/screenshot.png)

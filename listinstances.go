@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"html/template"
 	"sort"
+	"os"
 )
 
 
@@ -17,7 +18,7 @@ import (
 var templ =	template.Must(template.ParseGlob("./templates/*"))
 
 //construct to define fields to hold ec2 attributes
-type HMPOinstance struct {
+type Instance struct {
 
 	InstanceId string
 	InstanceType string
@@ -29,22 +30,22 @@ type HMPOinstance struct {
 
 
 //slice to hold the result
-type listofHMPOinstances []HMPOinstance
+type listofinstances []Instance
 
 
 //implement the sort interface. this allow lisofHMPOintsances to use sort
-func (slice listofHMPOinstances) Len() int{
+func (slice listofinstances) Len() int{
 
 	return len(slice)
 }
 
-func (slice listofHMPOinstances) Less(i,j int) bool{
+func (slice listofinstances) Less(i,j int) bool{
 
 	return slice[i].PrivateIpAddress < slice[j].PrivateIpAddress;
 
 }
 
-func (slice listofHMPOinstances) Swap(i,j int){
+func (slice listofinstances) Swap(i,j int){
 
 	slice[i], slice[j] = slice[j], slice[j]
 }
@@ -54,19 +55,19 @@ func (slice listofHMPOinstances) Swap(i,j int){
 func awsinfohandler(w http.ResponseWriter, r *http.Request) {
 
 
-	templ.ExecuteTemplate(w,"aws", HMPOInstances())
+	templ.ExecuteTemplate(w,"aws", getinstances())
 
 
 }
 
 
 //interate over theh result and return a slice containingg the result
-func HMPOInstances() []HMPOinstance{
+func getinstances() []Instance {
 
 
-	var h HMPOinstance
+	var h Instance
 
-	var listofcurrent listofHMPOinstances
+	var listofcurrent listofinstances
 
 	var tag string
 
@@ -119,13 +120,27 @@ func HMPOInstances() []HMPOinstance{
 }
 
 
+func GetPort() string {
+
+	p := os.Getenv("PORT")
+
+	if p != "" {
+
+		return ":" + p
+	}
+
+	return ":8080"
+}
+
+
+
 
 func main() {
 
 
 	http.HandleFunc("/", awsinfohandler)
 
-	http.ListenAndServe(":8080",nil)
+	http.ListenAndServe(GetPort(),nil)
 
 
 

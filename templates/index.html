@@ -1,0 +1,88 @@
+
+{{define "index"}}
+
+<html>
+<head>
+
+    <title> GO Tooling on AWS by https://github.com/Abdul2/GoAWS </title>
+
+    <style>
+
+        {{template "pagelayout"}}
+        {{template "tablestyle"}}
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <div id="header">
+
+        <h1>AWS </h1>
+
+    </div>
+
+    <div id="content" align="center">
+
+
+
+
+            <table cellspacing='0'> <!-- cellspacing='0' is important, must stay -->
+
+                <!-- Table Header -->
+                <thead>
+
+
+                <tr class="even">
+
+                    <th>Select</th>
+
+                </tr>
+
+                </thead>
+                <!-- Table Header -->
+
+                <!-- Table Body -->
+                <tbody>
+
+
+
+                <tr class="even">
+
+                    <td>
+
+                  <form action="/instances" method="post"> <button type="submit">Instances</button> </form>
+
+                    </td>
+
+                </tr>
+
+
+                </tbody>
+                <!-- Table Body -->
+
+            </table>
+
+
+
+    </div>
+
+    <div id="footer">
+
+        by : Go Tooling on AWS Abdul Abdi <br>
+        https://github.com/Abdul2/GoAWS
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
+
+{{end}}

@@ -9,7 +9,7 @@ import (
 
 	"net/http"
 	"html/template"
-	"sort"
+//	"sort"
 	"os"
 )
 
@@ -25,6 +25,7 @@ type Instance struct {
 	VpcId string
 	PrivateIpAddress string
 	Tag string
+	Architecture string
 	Counter int
 }
 
@@ -33,7 +34,7 @@ type Instance struct {
 type listofinstances []Instance
 
 
-//implement the sort interface. this allow lisofHMPOintsances to use sort
+//implement the sort interface. this allow listofinstances to use sort
 func (slice listofinstances) Len() int{
 
 	return len(slice)
@@ -60,6 +61,10 @@ func awsinfohandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func indexhandler(w http.ResponseWriter, r *http.Request){
+
+	templ.ExecuteTemplate(w,"index",nil)
+}
 
 //interate over theh result and return a slice containingg the result
 func getinstances() []Instance {
@@ -97,6 +102,7 @@ func getinstances() []Instance {
 			h.InstanceType = fmt.Sprintf("%s", *inst.InstanceType)
 			h.VpcId = fmt.Sprintf("%s", *inst.VpcId)
 			h.PrivateIpAddress = fmt.Sprintf("%s", *inst.PrivateIpAddress)
+			h.Architecture = fmt.Sprintf("%s", *inst.Architecture)
 			h.Counter++
 
 
@@ -114,7 +120,7 @@ func getinstances() []Instance {
 	}
 
 
-	sort.Sort(listofcurrent)
+//	sort.Sort(listofcurrent)
 
 	return listofcurrent
 }
@@ -138,7 +144,9 @@ func GetPort() string {
 func main() {
 
 
-	http.HandleFunc("/", awsinfohandler)
+	http.HandleFunc("/instances", awsinfohandler)
+
+	http.HandleFunc("/",indexhandler)
 
 	http.ListenAndServe(GetPort(),nil)
 

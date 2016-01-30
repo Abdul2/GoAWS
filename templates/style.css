@@ -48,6 +48,7 @@ padding: 10px;
 	padding: 10px;
 }
 
+/*
 #nav {
 
 	width:180;
@@ -55,6 +56,8 @@ padding: 10px;
 	padding:0;
 	background: #E6E6FA;
 }
+
+*/
 
 #nav ul{
 
@@ -64,7 +67,10 @@ padding: 10px;
 #main {
 
 	width:600;
+
 	float: right;
+
+	align: center;
 }
 
 #footer{
@@ -109,7 +115,8 @@ table {
 	font-size:12px;
 	text-shadow: 1px 1px 0px #fff;
 	background:#eaebec;
-	margin:20px;
+	/*margin:left-auto;
+	margin:right-auto; */
 	border:#ccc 1px solid;
 
 	-moz-border-radius:3px;
